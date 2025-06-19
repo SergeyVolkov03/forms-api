@@ -1,4 +1,4 @@
-import { IsArray, isBoolean, IsNotEmpty, IsOptional } from 'class-validator';
+import { IsArray, IsOptional } from 'class-validator';
 
 export class UpdateManyDto {
   @IsArray()

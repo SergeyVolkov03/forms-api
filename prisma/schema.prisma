@@ -17,9 +17,27 @@ datasource db {
 model User {
   id    Int     @default(autoincrement()) @id
   email String  @unique
-  name  String?
+  name  String
   password String
   is_blocked Boolean @default(false)
   is_admin Boolean @default(false)
-  last_time_at DateTime 
+  last_time_at DateTime
+  templates Template[]
+}
+
+model Template{
+  id Int     @default(autoincrement()) @id
+  author   User @relation(fields: [author_id], references: [id], onDelete: Cascade)
+  author_id Int
+  title String
+  description String?
+  topic  Topic  @relation(fields: [topic_id], references: [id])
+  topic_id Int
+  image  String?
+}
+
+model Topic{
+  id Int    @default(autoincrement()) @id
+  name      String
+  templates Template[]
 }
