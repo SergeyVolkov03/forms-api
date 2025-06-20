@@ -23,6 +23,7 @@ model User {
   is_admin      Boolean @default(false)
   last_time_at  DateTime
   templates     Template[]
+  likes         Like[]
 }
 
 model Template{
@@ -37,6 +38,7 @@ model Template{
   questions     Question[]
   created_at    DateTime @default(now())
   comments      Comment[]
+  likes         Like[]
 }
 
 model Topic{
@@ -78,4 +80,13 @@ model Comment {
   updated_at     DateTime @default(now()) @updatedAt
   template_id    Int
   template       Template  @relation(fields: [template_id], references: [id], onDelete: Cascade)
+}
+
+model Like {
+  id           Int       @id @default(autoincrement())
+  user_id      Int
+  template_id  Int
+  created_at   DateTime  @default(now())
+  user         User      @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  template     Template  @relation(fields: [template_id], references: [id], onDelete: Cascade)
 }

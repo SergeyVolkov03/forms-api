@@ -8,6 +8,7 @@ import { TopicsModule } from './topics/topics.module';
 import { QuestionsModule } from './questions/questions.module';
 import { AnswerOptionModule } from './answer-options/answer-options.module';
 import { CommentsModule } from './comments/comments.module';
+import { LikesModule } from './likes/likes.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { CommentsModule } from './comments/comments.module';
     QuestionsModule,
     AnswerOptionModule,
     CommentsModule,
+    LikesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
