@@ -36,6 +36,7 @@ model Template{
   image         String?
   questions     Question[]
   created_at    DateTime @default(now())
+  comments      Comment[]
 }
 
 model Topic{
@@ -58,14 +59,23 @@ model Question {
   title           String
   description     String
   type            QuestionType
-  template        Template  @relation(fields: [template_Id], references: [id], onDelete: Cascade)
-  template_Id     Int
+  template        Template  @relation(fields: [template_id], references: [id], onDelete: Cascade)
+  template_id     Int
   answer_options  AnswerOption[]
 }
 
 model AnswerOption {
   id             Int    @id @default(autoincrement())
   value          String
-  question_Id    Int
-  question       Question   @relation(fields: [question_Id], references: [id], onDelete: Cascade)
+  question_id    Int
+  question       Question   @relation(fields: [question_id], references: [id], onDelete: Cascade)
+}
+
+model Comment {
+  id             Int      @id @default(autoincrement())
+  content        String
+  created_at     DateTime @default(now())
+  updated_at     DateTime @default(now()) @updatedAt
+  template_id    Int
+  template       Template  @relation(fields: [template_id], references: [id], onDelete: Cascade)
 }

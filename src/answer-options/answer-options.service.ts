@@ -12,7 +12,7 @@ export class AnswerOptionService {
   }
 
   findAllByQuestionId(id: number) {
-    return this.prisma.answerOption.findMany({ where: { question_Id: id } });
+    return this.prisma.answerOption.findMany({ where: { question_id: id } });
   }
 
   findOne(id: number) {

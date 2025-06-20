@@ -20,7 +20,7 @@ export class AnswerOptionController {
     return this.answerOptionService.create(createAnswerOptionDto);
   }
 
-  @Get('question/:id')
+  @Get('/question/:id')
   findAll(@Param('id') id: string) {
     return this.answerOptionService.findAllByQuestionId(+id);
   }

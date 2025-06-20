@@ -7,6 +7,7 @@ import { TemplatesModule } from './templates/templates.module';
 import { TopicsModule } from './topics/topics.module';
 import { QuestionsModule } from './questions/questions.module';
 import { AnswerOptionModule } from './answer-options/answer-options.module';
+import { CommentsModule } from './comments/comments.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { AnswerOptionModule } from './answer-options/answer-options.module';
     TopicsModule,
     QuestionsModule,
     AnswerOptionModule,
+    CommentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

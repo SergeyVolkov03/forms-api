@@ -12,7 +12,7 @@ export class QuestionsService {
   }
 
   findAllByTemplateId(id: number) {
-    return this.prisma.question.findMany({ where: { template_Id: id } });
+    return this.prisma.question.findMany({ where: { template_id: id } });
   }
 
   findOne(id: number) {

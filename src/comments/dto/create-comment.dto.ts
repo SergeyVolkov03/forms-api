@@ -1,11 +1,11 @@
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
-export class CreateAnswerOptionDto {
+export class CreateCommentDto {
   @IsNotEmpty()
   @IsString()
-  value: string;
+  content: string;
 
   @IsNotEmpty()
   @IsNumber()
-  question_id: number;
+  template_id: number;
 }

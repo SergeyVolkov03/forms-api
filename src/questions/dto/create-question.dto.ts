@@ -4,7 +4,7 @@ import { QuestionType } from '../types/question-type';
 export class CreateQuestionDto {
   @IsNotEmpty()
   @IsNumber()
-  template_Id: number;
+  template_id: number;
 
   @IsNotEmpty()
   @IsNumber()
