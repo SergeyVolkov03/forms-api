@@ -15,29 +15,57 @@ datasource db {
 }
 
 model User {
-  id    Int     @default(autoincrement()) @id
-  email String  @unique
-  name  String
-  password String
-  is_blocked Boolean @default(false)
-  is_admin Boolean @default(false)
-  last_time_at DateTime
-  templates Template[]
+  id            Int     @default(autoincrement()) @id
+  email         String  @unique
+  name          String
+  password      String
+  is_blocked    Boolean @default(false)
+  is_admin      Boolean @default(false)
+  last_time_at  DateTime
+  templates     Template[]
 }
 
 model Template{
-  id Int     @default(autoincrement()) @id
-  author   User @relation(fields: [author_id], references: [id], onDelete: Cascade)
-  author_id Int
-  title String
-  description String?
-  topic  Topic  @relation(fields: [topic_id], references: [id])
-  topic_id Int
-  image  String?
+  id            Int     @default(autoincrement()) @id
+  author        User @relation(fields: [author_id], references: [id], onDelete: Cascade)
+  author_id     Int
+  title         String
+  description   String?
+  topic         Topic  @relation(fields: [topic_id], references: [id])
+  topic_id      Int
+  image         String?
+  questions     Question[]
+  created_at    DateTime @default(now())
 }
 
 model Topic{
-  id Int    @default(autoincrement()) @id
-  name      String
-  templates Template[]
+  id            Int    @default(autoincrement()) @id
+  name          String
+  templates     Template[]
+}
+
+enum QuestionType {
+  SHORT_TEXT
+  LONG_TEXT
+  NUMBER
+  SINGLE_CHOICE
+  MULTIPLE_CHOICE
+}
+
+model Question {
+  id              Int     @id @default(autoincrement())
+  order           Int
+  title           String
+  description     String
+  type            QuestionType
+  template        Template  @relation(fields: [template_Id], references: [id], onDelete: Cascade)
+  template_Id     Int
+  answer_options  AnswerOption[]
+}
+
+model AnswerOption {
+  id             Int    @id @default(autoincrement())
+  value          String
+  question_Id    Int
+  question       Question   @relation(fields: [question_Id], references: [id], onDelete: Cascade)
 }
