@@ -1,4 +1,11 @@
-import { IsEnum, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import {
+  IsBoolean,
+  IsEnum,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 import { QuestionType } from '../types/question-type';
 
 export class CreateQuestionDto {
@@ -14,9 +21,13 @@ export class CreateQuestionDto {
   @IsString()
   title: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
-  description: string;
+  description?: string;
+
+  @IsNotEmpty()
+  @IsBoolean()
+  is_displayed: boolean;
 
   @IsNotEmpty()
   @IsEnum(QuestionType)

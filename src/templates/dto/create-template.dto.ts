@@ -9,15 +9,15 @@ export class CreateTemplateDto {
   @IsNotEmpty()
   title: string;
 
-  @IsString()
   @IsOptional()
+  @IsString()
   description?: string;
 
   @IsNumber()
   @IsNotEmpty()
   topic_id: number;
 
-  @IsString()
   @IsOptional()
+  @IsString()
   image?: string;
 }

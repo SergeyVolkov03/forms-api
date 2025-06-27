@@ -10,6 +10,7 @@ import {
 import { TemplatesService } from './templates.service';
 import { CreateTemplateDto } from './dto/create-template.dto';
 import { UpdateTemplateDto } from './dto/update-template.dto';
+import { DeleteManyDto } from 'src/users/dto/delete-many.dto';
 
 @Controller('templates')
 export class TemplatesController {
@@ -40,6 +41,11 @@ export class TemplatesController {
     return this.templatesService.findAllByTopic(+id);
   }
 
+  @Get('/tags')
+  async searchByTags(@Body() body: { ids: number[] }) {
+    return this.templatesService.findAllByTags(body.ids);
+  }
+
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -51,5 +57,10 @@ export class TemplatesController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.templatesService.remove(+id);
+  }
+
+  @Delete()
+  async removeMany(@Body() deleteManyDto: DeleteManyDto) {
+    return await this.templatesService.removeMany(deleteManyDto);
   }
 }

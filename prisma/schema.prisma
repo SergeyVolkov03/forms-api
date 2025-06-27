@@ -37,8 +37,10 @@ model Template{
   image         String?
   questions     Question[]
   created_at    DateTime @default(now())
+  updated_at    DateTime @default(now()) @updatedAt
   comments      Comment[]
   likes         Like[]
+  tags          Tag[]
 }
 
 model Topic{
@@ -59,7 +61,8 @@ model Question {
   id              Int     @id @default(autoincrement())
   order           Int
   title           String
-  description     String
+  description     String?
+  is_displayed    Boolean  @default(true)
   type            QuestionType
   template        Template  @relation(fields: [template_id], references: [id], onDelete: Cascade)
   template_id     Int
@@ -89,4 +92,12 @@ model Like {
   created_at   DateTime  @default(now())
   user         User      @relation(fields: [user_id], references: [id], onDelete: Cascade)
   template     Template  @relation(fields: [template_id], references: [id], onDelete: Cascade)
+}
+
+model Tag {
+  id          Int       @id @default(autoincrement())
+  name        String    @unique
+  templates   Template[]
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @default(now()) @updatedAt
 }
