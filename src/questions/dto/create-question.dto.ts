@@ -17,17 +17,17 @@ export class CreateQuestionDto {
   @IsNumber()
   order: number;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
-  title: string;
+  title?: string;
 
   @IsOptional()
   @IsString()
   description?: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsBoolean()
-  is_displayed: boolean;
+  is_displayed?: boolean;
 
   @IsNotEmpty()
   @IsEnum(QuestionType)

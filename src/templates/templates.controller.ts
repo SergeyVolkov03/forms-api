@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { TemplatesService } from './templates.service';
 import { CreateTemplateDto } from './dto/create-template.dto';
@@ -26,6 +27,16 @@ export class TemplatesController {
     return this.templatesService.findAll();
   }
 
+  @Get('latest')
+  async getLatestTemplates(@Query('limit') limit: string) {
+    return this.templatesService.getLatestTemplates(+limit);
+  }
+
+  @Get('popular')
+  async getPopularTemplates(@Query('limit') limit: string) {
+    return this.templatesService.getPopularTemplates(+limit);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.templatesService.findOne(+id);
@@ -41,7 +52,7 @@ export class TemplatesController {
     return this.templatesService.findAllByTopic(+id);
   }
 
-  @Get('/tags')
+  @Post('/tags')
   async searchByTags(@Body() body: { ids: number[] }) {
     return this.templatesService.findAllByTags(body.ids);
   }

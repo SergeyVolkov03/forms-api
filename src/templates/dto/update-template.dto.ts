@@ -1,4 +1,10 @@
-import { IsNumber, IsOptional, IsString } from 'class-validator';
+import {
+  IsArray,
+  IsBoolean,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 export class UpdateTemplateDto {
   @IsString()
@@ -16,4 +22,16 @@ export class UpdateTemplateDto {
   @IsString()
   @IsOptional()
   image?: string;
+
+  @IsArray()
+  @IsOptional()
+  tags?: number[];
+
+  @IsArray()
+  @IsOptional()
+  fillers?: number[];
+
+  @IsBoolean()
+  @IsOptional()
+  is_public?: boolean;
 }

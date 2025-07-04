@@ -1,13 +1,19 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import {
+  IsArray,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 export class CreateTemplateDto {
   @IsNumber()
   @IsNotEmpty()
   author_id: number;
 
+  @IsOptional()
   @IsString()
-  @IsNotEmpty()
-  title: string;
+  title?: string;
 
   @IsOptional()
   @IsString()
@@ -20,4 +26,8 @@ export class CreateTemplateDto {
   @IsOptional()
   @IsString()
   image?: string;
+
+  @IsArray()
+  @IsOptional()
+  tags?: number[];
 }

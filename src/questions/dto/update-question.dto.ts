@@ -22,7 +22,7 @@ export class UpdateQuestionDto {
 
   @IsOptional()
   @IsBoolean()
-  is_displayed: boolean;
+  is_displayed?: boolean;
 
   @IsOptional()
   @IsEnum(QuestionType)

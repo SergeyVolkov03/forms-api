@@ -10,6 +10,7 @@ import {
 import { AnswerOptionService } from './answer-options.service';
 import { CreateAnswerOptionDto } from './dto/create-answer-option.dto';
 import { UpdateAnswerOptionDto } from './dto/update-answer-option.dto';
+import { DeleteManyDto } from 'src/users/dto/delete-many.dto';
 
 @Controller('answer-option')
 export class AnswerOptionController {
@@ -41,5 +42,10 @@ export class AnswerOptionController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.answerOptionService.remove(+id);
+  }
+
+  @Delete()
+  removeMany(@Body() deleteManyDto: DeleteManyDto) {
+    return this.answerOptionService.removeMany(deleteManyDto);
   }
 }

@@ -6,10 +6,13 @@ import {
   Patch,
   Param,
   Delete,
+  Req,
+  BadRequestException,
 } from '@nestjs/common';
 import { QuestionsService } from './questions.service';
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { UpdateQuestionDto } from './dto/update-question.dto';
+import { UpdateQuestionsOrderDto } from './dto/update_orders.dto';
 
 @Controller('questions')
 export class QuestionsController {
@@ -18,6 +21,11 @@ export class QuestionsController {
   @Post()
   create(@Body() createQuestionDto: CreateQuestionDto) {
     return this.questionsService.create(createQuestionDto);
+  }
+
+  @Patch('/update')
+  async updateOrder(@Body() updateQuestionsDto: UpdateQuestionsOrderDto) {
+    return this.questionsService.updateQuestionsOrder(updateQuestionsDto);
   }
 
   @Get('/template/:id')

@@ -6,6 +6,7 @@ import {
   Param,
   ParseIntPipe,
   Patch,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
@@ -24,10 +25,20 @@ export class UsersController {
     return await this.usersService.findAll();
   }
 
+  @Get('search/email')
+  searchByEmail(@Query('query') query: string) {
+    return this.usersService.searchByEmail(query);
+  }
+
+  @Get('search/username')
+  searchByUserName(@Query('query') query: string) {
+    return this.usersService.searchByUsername(query);
+  }
+
   @Get(':id')
   @UseGuards(JwtAuthGuard)
-  async findOne(@Param('id', ParseIntPipe) id: number) {
-    return await this.usersService.findOne(id);
+  async findOne(@Param('id', ParseIntPipe) id: string) {
+    return await this.usersService.findOne(+id);
   }
 
   @Patch(':id')

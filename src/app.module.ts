@@ -10,6 +10,8 @@ import { AnswerOptionModule } from './answer-options/answer-options.module';
 import { CommentsModule } from './comments/comments.module';
 import { LikesModule } from './likes/likes.module';
 import { TagsModule } from './tags/tags.module';
+import { AnswersModule } from './answers/answers.module';
+import { FormsModule } from './forms/forms.module';
 
 @Module({
   imports: [
@@ -22,6 +24,8 @@ import { TagsModule } from './tags/tags.module';
     CommentsModule,
     LikesModule,
     TagsModule,
+    AnswersModule,
+    FormsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

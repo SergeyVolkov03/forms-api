@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateAnswerOptionDto } from './dto/create-answer-option.dto';
 import { UpdateAnswerOptionDto } from './dto/update-answer-option.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { DeleteManyDto } from 'src/users/dto/delete-many.dto';
 
 @Injectable()
 export class AnswerOptionService {
@@ -28,5 +29,11 @@ export class AnswerOptionService {
 
   remove(id: number) {
     return this.prisma.answerOption.delete({ where: { id } });
+  }
+
+  removeMany(deleteManyDto: DeleteManyDto) {
+    return this.prisma.answerOption.deleteMany({
+      where: { id: { in: deleteManyDto.ids } },
+    });
   }
 }

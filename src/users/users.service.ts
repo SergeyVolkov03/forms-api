@@ -16,6 +16,38 @@ export class UsersService {
     return this.prisma.user.findUnique({ where: { id } });
   }
 
+  searchByUsername(query: string) {
+    return this.prisma.user.findMany({
+      where: {
+        name: {
+          startsWith: query,
+          mode: 'insensitive',
+        },
+      },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+      },
+    });
+  }
+
+  searchByEmail(query: string) {
+    return this.prisma.user.findMany({
+      where: {
+        email: {
+          startsWith: query,
+          mode: 'insensitive',
+        },
+      },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+      },
+    });
+  }
+
   update(id: number, updateUserDto: UpdateUserDto) {
     return this.prisma.user.update({
       where: { id },
