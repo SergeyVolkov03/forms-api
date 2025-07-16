@@ -7,8 +7,6 @@ import { TemplatesModule } from './templates/templates.module';
 import { TopicsModule } from './topics/topics.module';
 import { QuestionsModule } from './questions/questions.module';
 import { AnswerOptionModule } from './answer-options/answer-options.module';
-import { CommentsModule } from './comments/comments.module';
-import { LikesModule } from './likes/likes.module';
 import { TagsModule } from './tags/tags.module';
 import { AnswersModule } from './answers/answers.module';
 import { FormsModule } from './forms/forms.module';
@@ -22,8 +20,6 @@ import { SalesForceModule } from './sales-force/sales-force.module';
     TopicsModule,
     QuestionsModule,
     AnswerOptionModule,
-    CommentsModule,
-    LikesModule,
     TagsModule,
     AnswersModule,
     FormsModule,
