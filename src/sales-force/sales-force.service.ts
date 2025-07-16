@@ -1,15 +1,14 @@
-// salesforce.service.ts
 import { Injectable } from '@nestjs/common';
-import * as jsforce from 'jsforce';
+import { Connection } from 'jsforce';
 import { CreateSalesForceDto } from './dto/create-sales-force.dto';
 import { UpdateSalesForceDto } from './dto/update-sales-force.dto';
 
 @Injectable()
 export class SalesForceService {
-  private connection: jsforce.Connection;
+  private connection: Connection;
 
   constructor() {
-    this.connection = new jsforce.Connection({
+    this.connection = new Connection({
       loginUrl: 'https://login.salesforce.com',
     });
   }
