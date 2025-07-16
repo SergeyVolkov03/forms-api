@@ -26,6 +26,7 @@ model User {
   likes               Like[]
   fillable_templates  Template[] @relation("TemplateFillers")
   forms Form[]
+  sales_force_id      String?
 }
 
 model Template{

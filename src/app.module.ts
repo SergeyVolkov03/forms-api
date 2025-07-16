@@ -12,6 +12,7 @@ import { LikesModule } from './likes/likes.module';
 import { TagsModule } from './tags/tags.module';
 import { AnswersModule } from './answers/answers.module';
 import { FormsModule } from './forms/forms.module';
+import { SalesForceModule } from './sales-force/sales-force.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { FormsModule } from './forms/forms.module';
     TagsModule,
     AnswersModule,
     FormsModule,
+    SalesForceModule,
   ],
   controllers: [AppController],
   providers: [AppService],

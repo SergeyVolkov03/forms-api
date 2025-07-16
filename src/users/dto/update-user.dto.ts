@@ -6,4 +6,7 @@ export class UpdateUserDto {
 
   @IsOptional()
   is_admin?: boolean;
+
+  @IsOptional()
+  sales_force_id?: string;
 }
