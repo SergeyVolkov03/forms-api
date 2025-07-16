@@ -23,7 +23,6 @@ model User {
   is_admin            Boolean @default(false)
   last_time_at        DateTime
   templates           Template[] @relation("TemplateAuthor")
-  likes               Like[]
   fillable_templates  Template[] @relation("TemplateFillers")
   forms Form[]
   sales_force_id      String?
@@ -43,8 +42,6 @@ model Template{
   questions     Question[]
   created_at    DateTime  @default(now())
   updated_at    DateTime  @default(now()) @updatedAt
-  comments      Comment[]
-  likes         Like[]
   tags          Tag[]
   forms         Form[]
 }
@@ -81,24 +78,6 @@ model AnswerOption {
   value          String
   question_id    Int
   question       Question   @relation(fields: [question_id], references: [id], onDelete: Cascade)
-}
-
-model Comment {
-  id             Int      @id @default(autoincrement())
-  content        String
-  created_at     DateTime @default(now())
-  updated_at     DateTime @default(now()) @updatedAt
-  template_id    Int
-  template       Template  @relation(fields: [template_id], references: [id], onDelete: Cascade)
-}
-
-model Like {
-  id           Int       @id @default(autoincrement())
-  user_id      Int
-  template_id  Int
-  created_at   DateTime  @default(now())
-  user         User      @relation(fields: [user_id], references: [id], onDelete: Cascade)
-  template     Template  @relation(fields: [template_id], references: [id], onDelete: Cascade)
 }
 
 model Tag {
